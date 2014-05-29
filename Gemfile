@@ -48,7 +48,13 @@ gem 'bcrypt', '~> 3.1.7'
 # in production environments by default.
 
 group :development, :test do
+	gem 'rspec', '~> 3.0.0.beta2'
   gem 'rspec-rails', '~> 3.0.0.beta'
 	gem 'guard'
-	gem 'guard-rspec'
+	gem 'guard-rspec', '~> 4.2.8'
+	gem 'capybara'
 end
+
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
