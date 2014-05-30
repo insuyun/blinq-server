@@ -11,7 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529014556) do
+ActiveRecord::Schema.define(version: 20140530153828) do
+
+  create_table "courses", force: true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "courses", ["code"], name: "index_courses_on_code", unique: true
+  add_index "courses", ["name"], name: "index_courses_on_name", unique: true
+
+  create_table "lectures", force: true do |t|
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "schedules", force: true do |t|
+    t.integer  "day"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.integer  "student_number"
@@ -20,6 +44,7 @@ ActiveRecord::Schema.define(version: 20140529014556) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin",           default: false
   end
 
 end

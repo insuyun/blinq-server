@@ -1,8 +1,17 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-	<div class="container">
-		<div class="navbar-header">
-			<%= link_to "BCheck", '#', id: "logo", class: "navbar-brand" %>
-		</div>
+<div class="container">
+	<div class="navbar-header">
+		<%= link_to "BCheck", root_path, id: "logo", class: "navbar-brand" %>
+	</div>
+	<div class="navbar-collapse collapse">
+		<ul class="nav navbar-nav navbar-inverse navbar-right">
+			<% if signed_in? %>
+				<li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+			<% else %>
+				<li><%= link_to "Sign in", signin_path %></li>
+			<% end %>
+		</ul>
+	</div>
 </div>
 </header>
 
