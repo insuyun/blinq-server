@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
 	def signed_in_user 
 		unless signed_in?
-			flash[:warning] = "Please sign in." 
+			flash[:info] = "Please sign in." 
 			redirect_to root_url
 		end
 	end

@@ -29,7 +29,9 @@
 			<%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirmation"%>
 		</div>
 
-		<%= f.submit "Sign up", class: "btn btn-large btn-primary" %>
-		<%= link_to_function "Cancel", "history.back()", class: "btn btn-large btn-warning" %>
+		<div class="form-group" align="right">
+			<%= f.submit "Sign up", class: "btn btn-large btn-primary" %>
+			<%= link_to_function "Cancel", "history.back()", class: "btn btn-large btn-warning" %>
+		</div>
 	<% end %>
 </div>
