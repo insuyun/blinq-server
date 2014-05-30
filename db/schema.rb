@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140530153828) do
+ActiveRecord::Schema.define(version: 20140530195006) do
 
   create_table "courses", force: true do |t|
     t.string   "name"
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "instructor"
   end
 
   add_index "courses", ["code"], name: "index_courses_on_code", unique: true
