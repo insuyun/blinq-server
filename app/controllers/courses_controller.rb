@@ -1,4 +1,7 @@
 class CoursesController < ApplicationController
+	before_action :signed_in_user, only: [:new, :create, :index]
+	before_action :admin_user, only: [:new, :create, :index]
+
 	def new
 		@course = Course.new
 		2.times { @course.schedules.build }
@@ -12,6 +15,20 @@ class CoursesController < ApplicationController
 		else
 			render :action => 'new'
 		end
+	end
+
+	def index
+		@courses = Course.all
+	end
+
+	def destroy
+		@course = Course.find(params[:id])
+		@course.destroy
+		redirect_to courses_url
+	end
+
+	def show
+		@course = Course.find(params[:id])
 	end
 
 	private

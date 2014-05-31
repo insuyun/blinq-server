@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		@courses = Course.all
 	end
 
 	private
@@ -24,13 +25,6 @@ class UsersController < ApplicationController
 		params.require(:user).permit(:name, :email, :password,
 																 :password_confirmation, :student_number)
 	end		
-
-	def signed_in_user 
-		unless signed_in?
-			flash[:info] = "Please sign in." 
-			redirect_to root_url
-		end
-	end
 
 	def correct_user
 		@user = User.find(params[:id])

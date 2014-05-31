@@ -1,0 +1,31 @@
+<h1 align="center">Course information</h1>
+
+<div class="col-md-8 col-md-offset-2">
+<% if current_user.admin? %>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Code</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @courses.each do |course| %>
+				<tr>
+					<td><%= course.name %></td>
+					<td><%= course.code %></td>
+					<td><%= link_to "View", course, class: "btn btn-sm btn-default"%>
+						<%= link_to "Destroy", course, class: "btn btn-sm btn-danger", method: :delete, data: { confirm: "Are you sure?" } %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<div align="right">
+		<%= link_to "Create new course", new_course_path, class: "btn btn-primary btn-large" %>
+	</div>
+
+<% else %>
+
+<% end %>
+</div>
