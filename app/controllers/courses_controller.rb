@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
-	before_action :signed_in_user, only: [:new, :create, :index]
-	before_action :admin_user, only: [:new, :create, :index]
+	before_action :signed_in_user, only: [:new, :create, :index, :show]
+	before_action :admin_user, only: [:new, :create, :index, :show]
 
 	def new
 		@course = Course.new

@@ -1,1 +1,23 @@
 <h1 align="center"><%= "#{@course.code} #{@course.name}" %></h1>
+
+<div class="col-md-8 col-md-offset-2">
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Attendance</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @course.lectures.each do |lecture| %>
+				<tr>
+					<td><%= lecture.date %></td>
+					<td><%= link_to "View", lecture, class: "btn btn-sm btn-default"%>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<div class="form-group" align="right">
+		<%= link_to_function "Back", "history.back()", class: "btn btn-large btn-warning" %>
+	</div>
+</div>
