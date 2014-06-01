@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
 	before_action :signed_in_user, only: [:new, :create, :index, :show]
-	before_action :admin_user, only: [:new, :create, :index, :show]
+	before_action :admin_user, only: [:create, :new, :destroy]
 
 	def new
 		@course = Course.new
@@ -28,7 +28,7 @@ class CoursesController < ApplicationController
 	end
 
 	def show
-		@course = Course.find(params[:id])
+			@course = Course.find(params[:id])
 	end
 
 	private

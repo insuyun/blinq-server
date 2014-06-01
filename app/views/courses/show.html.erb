@@ -12,7 +12,15 @@
 			<% @course.lectures.each do |lecture| %>
 				<tr>
 					<td><%= "#{lecture.date} #{Date::ABBR_DAYNAMES[lecture.date.wday]}" %></td>
-					<td><%= link_to "View", lecture, class: "btn btn-sm btn-default"%>
+					<% if current_user.admin? %>
+						<td><%= link_to "View", lecture, class: "btn btn-sm btn-default"%></td>
+					<% else %>
+						<% if current_user.attending? lecture %>
+							<td>O</td>
+						<% else %>
+							<td class="warning">X</td>
+						<% end %>
+					<% end %>
 				</tr>
 			<% end %>
 		</tbody>
