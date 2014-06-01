@@ -1,6 +1,9 @@
 namespace :db do
 	desc "Fill database with sample data"
 	task populate: :environment do
+		
+		ATTENDANCE_ODDS = 5
+
 		admin = User.create!(name: "admin",
 												 email: "admin@kaist.ac.kr",
 												 password: "admin",
@@ -47,6 +50,13 @@ namespace :db do
 					schedule.lectures.create!(date: start)
 				end
 				start = start.tomorrow
+			end
+		end
+
+		users = User.students
+		users.each do |user|
+			Lecture.all.each do |lecture|
+					user.attend(lecture) if rand(ATTENDANCE_ODDS) != 0
 			end
 		end
 	end

@@ -7,9 +7,21 @@
 			<tr>
 				<th>Student number</th>
 				<th>Student name</th>
+				<th>Attendance</th>
 			</tr>
 		</thead>
 		<tbody>
+			<% User.students.each do |user| %>
+				<tr>
+					<td><%= user.student_number %></td>
+					<td><%= user.name %></td>
+					<% if user.attending? @lecture %>
+						<td>O</td>
+					<% else %>
+						<td class="warning">X</td>
+					<% end %>
+				</tr>
+		<% end %>
 		</tbody>
 	</table>
 	<div class="form-group" align="right">
