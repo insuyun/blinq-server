@@ -10,6 +10,11 @@ namespace :db do
 												 password_confirmation: "admin",
 												 admin: true)
 
+		user = User.create!(name: "user",
+												email: "user@kaist.ac.kr",
+												password: "user",
+												password_confirmation: "user")
+
 		99.times do |n|
 			name = Faker::Name.name
 			email = "example-#{n+1}@kaist.ac.kr"

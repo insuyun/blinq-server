@@ -1,3 +1,24 @@
-<h1 align="center">User information</h1>
+<h1 align="center">Your attendance information</h1>
 
+<div class="col-md-8 col-md-offset-2">
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Code</th>
+				<th>Name</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @courses.each do |course| %>
+				<tr>
+					<td><%= course.code %></td>
+					<td><%= course.name %></td>
+					<td><%= link_to "View", course, class: "btn btn-sm btn-default"%>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<div align="right">
+	</div>
 </div>
