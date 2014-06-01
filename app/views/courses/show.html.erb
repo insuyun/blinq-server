@@ -11,7 +11,7 @@
 		<tbody>
 			<% @course.lectures.each do |lecture| %>
 				<tr>
-					<td><%= lecture.date %></td>
+					<td><%= "#{lecture.date} #{Date::ABBR_DAYNAMES[lecture.date.wday]}" %></td>
 					<td><%= link_to "View", lecture, class: "btn btn-sm btn-default"%>
 				</tr>
 			<% end %>

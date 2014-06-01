@@ -1,0 +1,18 @@
+<h1 align="center"><%= "#{@lecture.course.code} #{@lecture.course.name}" %></h1>
+<h3 align="center"><%= "#{@lecture.date} #{Date::ABBR_DAYNAMES[@lecture.date.wday]}" %></h3>
+
+<div class="col-md-8 col-md-offset-2">
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Student number</th>
+				<th>Student name</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	<div class="form-group" align="right">
+		<%= link_to_function "Back", "history.back()", class: "btn btn-large btn-warning" %>
+	</div>
+</div>

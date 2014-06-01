@@ -4,5 +4,4 @@ class Schedule < ActiveRecord::Base
 
 	validates :start_time, presence: true
 	validates :end_time, presence: true
-	validates :course_id, presence: true
 end

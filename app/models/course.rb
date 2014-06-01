@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-	has_many :schedules
+	has_many :schedules, :inverse_of => :course
 	accepts_nested_attributes_for :schedules, allow_destroy: true
 	validates :name, presence: true
 	validates :code, presence: true, uniqueness: { case_sensitive: false }

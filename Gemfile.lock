@@ -59,6 +59,8 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
+    faker (1.1.2)
+      i18n (~> 0.5)
     ffi (1.9.3)
     formatador (0.2.5)
     guard (2.6.1)
@@ -194,6 +196,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   capybara
   coffee-rails (~> 4.0.0)
+  faker (= 1.1.2)
   guard
   guard-rspec (~> 4.2.8)
   jbuilder (~> 1.2)

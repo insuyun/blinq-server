@@ -5,16 +5,16 @@
 	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<th>Name</th>
 				<th>Code</th>
+				<th>Name</th>
 				<th></th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @courses.each do |course| %>
 				<tr>
-					<td><%= course.name %></td>
 					<td><%= course.code %></td>
+					<td><%= course.name %></td>
 					<td><%= link_to "View", course, class: "btn btn-sm btn-default"%>
 						<%= link_to "Destroy", course, class: "btn btn-sm btn-danger", method: :delete, data: { confirm: "Are you sure?" } %></td>
 				</tr>
