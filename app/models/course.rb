@@ -5,6 +5,9 @@ class Course < ActiveRecord::Base
 	validates :code, presence: true, uniqueness: { case_sensitive: false }
 	validates :instructor, presence: true
 
+	has_many :registrations
+	has_many :registering_users, through: :registrations, source: :user
+
 	def schedule_by_wday wday
 		schedules.to_a.find { |x| x.day == wday }
 	end

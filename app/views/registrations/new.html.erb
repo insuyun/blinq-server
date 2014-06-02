@@ -1,0 +1,28 @@
+<h1 align="center">Register course</h1>
+
+<div class="col-md-4 col-md-offset-4">
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Code</th>
+				<th>Name</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% current_user.unregistered_courses.each do |course| %>
+				<%= form_for(:registration, url: registrations_path) do |f| %> 
+				<tr>
+					<td><%= course.code %></td>
+					<td><%= course.name %></td>
+					<%= f.hidden_field :course_id, value: course.id %>
+					<td><%= f.submit "Register", class: "btn btn-sm btn-default"%></td>
+				</tr>
+				<% end %>
+			<% end %>
+		</tbody>
+	</table>
+	<div class="form-group" align="center">
+		<%= link_to_function "Back", "history.back()", class: "btn btn-large btn-warning" %>
+	</div>
+</div>

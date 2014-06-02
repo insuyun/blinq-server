@@ -39,7 +39,10 @@ namespace :db do
 									{day:3, start_time:Time.new(2000, 1, 1, 13, 00), end_time:Time.new(2000, 1, 1, 14, 30)}]},
 			{code: "IS511", name: "Information Security", instructor: "Yongdae Kim, Seungwon Shin, Byunghoon Kang, Kyungsoo Park",
 			schedules_attributes: [{day:1, start_time:Time.new(2000, 1, 1, 16, 00), end_time:Time.new(2000, 1, 1, 17, 30)},
-									{day:3, start_time:Time.new(2000, 1, 1, 16, 00), end_time:Time.new(2000, 1, 1, 17, 30)}]}]
+									{day:3, start_time:Time.new(2000, 1, 1, 16, 00), end_time:Time.new(2000, 1, 1, 17, 30)}]},
+			{code: "CSS311", name: "Computer Architecture", instructor: "Hyeonsoo Yoon",
+				schedules_attributes: [{day:2, start_time:Time.new(2000, 1, 1, 14, 30), end_time:Time.new(2000, 1, 1, 16, 00)},
+									{day:4, start_time:Time.new(2000, 1, 1, 14, 30), end_time:Time.new(2000, 1, 1, 16, 00)}]}]
 
 		courses.each do |course|
 			Course.create!(course)
@@ -59,9 +62,14 @@ namespace :db do
 		end
 
 		users = User.students
+		courses = Course.all[0..-2] # except for one course
+		
 		users.each do |user|
-			Lecture.all.each do |lecture|
-					user.attend(lecture) if rand(ATTENDANCE_ODDS) != 0
+			courses.each do |course|
+				user.register course
+				course.lectures.each do |lecture|
+					user.attend lecture if rand(ATTENDANCE_ODDS) != 0
+				end
 			end
 		end
 	end

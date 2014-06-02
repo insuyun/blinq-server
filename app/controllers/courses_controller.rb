@@ -3,8 +3,12 @@ class CoursesController < ApplicationController
 	before_action :admin_user, only: [:create, :new, :destroy]
 
 	def new
-		@course = Course.new
-		2.times { @course.schedules.build }
+		if current_user.admin?
+			@course = Course.new
+			2.times { @course.schedules.build }
+		else
+			@courses = Course.all - current_user.registed_course
+		end
 	end
 
 	def create

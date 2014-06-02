@@ -7,16 +7,30 @@ class User < ActiveRecord::Base
 
 	has_many :attendances
 	has_many :attended_lectures, through: :attendances, source: :lecture
+	
+	has_many :registrations
+	has_many :registered_courses, through: :registrations, source: :course
 
 	def attending?(lecture)
-		attendances.find_by(lecture_id: lecture.id)
+			attendances.find_by(lecture_id: lecture.id)
 	end
 
 	def attend(lecture)
-		attendances.create!(lecture_id: lecture.id)
+		if registered_courses.include? lecture.course
+			attendances.create!(lecture_id: lecture.id)
+		end
+	end
+
+	def register(course)
+		registrations.create!(course_id: course.id)
+	end
+
+	def unregistered_courses
+			Course.all - registered_courses 
 	end
 
 	def self.students
 		all.find_all {|user| not user.admin?}
 	end
+
 end
