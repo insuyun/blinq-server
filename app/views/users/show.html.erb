@@ -2,7 +2,7 @@
 
 
 <% current_user.registered_courses.each do |course| %>
-	<%= link_to course, class: "success registered-course" do %>
+	<%= link_to course, class: "success registered-course", target: :_top do %>
 		<div class="course-container container-fluid">
 			<div class="col-xs-1 course-icon">
 				  <span class="glyphicon glyphicon-ok"></span>
@@ -21,7 +21,7 @@
 <% end %>
 
 <% current_user.unregistered_courses.each do |course| %>
-	<%= link_to registrations_path(course_id: course.id), data:{confirm: "Do you want to register this course?"}, class: "unregistered-course" do %>
+	<%= link_to registrations_path(course_id: course.id), data:{confirm: "Do you want to register this course?"}, class: "unregistered-course", target: :_top do %>
 		<div class="course-container container-fluid">
 			<div class="col-xs-1 course-icon">
 				  <span class="glyphicon glyphicon-minus"></span>
