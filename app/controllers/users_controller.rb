@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
+			flash[:info] = "Thanks for joining bliq!."
 			redirect_to root_path
 			# Handle a successful save.
 		else

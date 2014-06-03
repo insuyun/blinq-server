@@ -40,7 +40,7 @@ namespace :db do
 			{code: "IS511", name: "Information Security", instructor: "Yongdae Kim, Seungwon Shin, Byunghoon Kang, Kyungsoo Park",
 			schedules_attributes: [{day:1, start_time:Time.new(2000, 1, 1, 16, 00), end_time:Time.new(2000, 1, 1, 17, 30)},
 									{day:3, start_time:Time.new(2000, 1, 1, 16, 00), end_time:Time.new(2000, 1, 1, 17, 30)}]},
-			{code: "CSS311", name: "Computer Architecture", instructor: "Hyeonsoo Yoon",
+			{code: "CS311", name: "Computer Architecture", instructor: "Hyeonsoo Yoon",
 				schedules_attributes: [{day:2, start_time:Time.new(2000, 1, 1, 14, 30), end_time:Time.new(2000, 1, 1, 16, 00)},
 									{day:4, start_time:Time.new(2000, 1, 1, 14, 30), end_time:Time.new(2000, 1, 1, 16, 00)}]}]
 

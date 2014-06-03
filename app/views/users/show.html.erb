@@ -1,25 +1,40 @@
-<h1 align="center">Your attendance information</h1>
+<% provide(:title, "Attendances") %>
 
-<div class="col-md-8 col-md-offset-2">
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>Code</th>
-				<th>Name</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<% current_user.registered_courses.each do |course| %>
-				<tr>
-					<td><%= course.code %></td>
-					<td><%= course.name %></td>
-					<td><%= link_to "View", course, class: "btn btn-sm btn-default"%>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
-	<div align="center">
-		<%= link_to "Register new course", new_registration_path, class: "btn btn-primary" %>
-	</div>
-</div>
+
+<% current_user.registered_courses.each do |course| %>
+	<%= link_to course, class: "success registered-course" do %>
+		<div class="course-container container-fluid">
+			<div class="col-xs-1 course-icon">
+				  <span class="glyphicon glyphicon-ok"></span>
+			</div>
+			<div class="col-xs-10">
+				<div class="div-course-code">
+					<%= course.code %>
+				</div>
+				<div class="div-course-name">
+					<%= course.name %>
+				</div>
+			</div>
+		</div>
+		<hr>
+	<% end %>
+<% end %>
+
+<% current_user.unregistered_courses.each do |course| %>
+	<%= link_to registrations_path(course_id: course.id), data:{confirm: "Do you want to register this course?"}, class: "unregistered-course" do %>
+		<div class="course-container container-fluid">
+			<div class="col-xs-1 course-icon">
+				  <span class="glyphicon glyphicon-minus"></span>
+			</div>
+			<div class="col-xs-10">
+				<div class="div-course-code">
+					<%= course.code %>
+				</div>
+				<div class="div-course-name">
+					<%= course.name %>
+				</div>
+			</div>
+		</div>
+		<hr>
+	<% end %>
+<% end %>

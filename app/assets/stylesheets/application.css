@@ -8,11 +8,98 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require_tree .
+ *= require_self
  */
 
 body {
-	padding-top: 60px;
+	background-color: #dbcbe2;
+	padding-top: 10px;
 }
 
+label{
+	color: #8852a1;
+}
+
+.btn {
+	width: 100%;
+}
+
+.success
+{
+	color: #8852a1;
+	font-size: 1.0em;
+	font-weight: bold;
+}
+
+.fail
+{
+	color: gray;
+	font-size: 1.0em;
+	font-weight: bold;
+
+}
+
+.registered-course
+{
+	color: #8852a1;
+	font-size: 1.0em;
+	font-weight: bold;
+}
+
+.registered-course:hover
+{
+	color: #8852a1;
+	text-decoration: none;
+}
+
+.unregistered-course
+{
+	color: gray;
+	font-size: 1.0em;
+	font-weight: bold;
+}
+
+.unregistered-course:hover
+{
+	color: gray;
+	text-decoration: none;
+}
+
+hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.course-icon
+{
+	padding-top: 10px;
+	width:10px;
+}
+
+.div-course-name
+{
+	width:100%;
+}
+
+.div-course-code
+{
+	width:100%;
+}
+
+.course-container
+{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.glyphicon-success
+{
+	color: green;
+}
+
+.glyphicon-fail
+{
+	color: red;
+}

@@ -1,22 +1,23 @@
-<h1 align="center">Sign in</h1>
+<% provide(:title, 'Sign in') %>
 
-<div class="col-md-4 col-md-offset-4">
-	<%= form_for(:session, url: sessions_path) do |f| %>
+<div class="container">
+<%= form_for(:session, url: sessions_path) do |f| %>
 
-		<div class="form-group">
-			<%= f.label :email %>
-			<%= f.text_field :email, class: "form-control", placeholder: "Email"%>
-		</div>
+	<div class="form-group">
+		<%= f.label :email, class: "label-lg"%>
+		<%= f.text_field :email, class: "form-control input-lg", placeholder: "Email"%>
+	</div>
 
-		<div class="form-group">
-			<%= f.label :password %>
-			<%= f.password_field :password, class: "form-control", placeholder: "Password" %>
-		</div>
+	<div class="form-group">
+		<%= f.label :password, class: "label-lg" %>
+		<%= f.password_field :password, class: "form-control input-lg", placeholder: "Password" %>
+	</div>
 
-		<div class="form-group">
-			<%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-		</div>
-	<% end %>
-
-	<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+	<div class="form-group">
+		<%= f.submit "Sign in", class: "btn btn-lg btn-primary" %>
+	</div>
+	<div class="form-group">
+		<%= link_to "or join bliq", signup_path, class: "btn btn-lg btn-success"%>
+	</div>
+<% end %>
 </div>

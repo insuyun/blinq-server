@@ -63,5 +63,8 @@ Bcheck::Application.routes.draw do
 	match '/signin',  to: 'sessions#new',         via: 'get'
 	match '/signout', to: 'sessions#destroy',     via: 'delete'
 
+	match '/registrations', to: 'registrations#create', via: 'get'
+
 	root 'sessions#new'
+
 end

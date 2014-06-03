@@ -3,8 +3,8 @@ class RegistrationsController < ApplicationController
 	end
 
 	def create
-		# Set user id
-		@registration = Registration.new(registration_params)
+		@registration = Registration.new
+		@registration.course_id = params[:course_id]
 		@registration.user_id = current_user.id
 
 		if @registration.save
@@ -13,7 +13,7 @@ class RegistrationsController < ApplicationController
 			flash[:warning] = "Course registration has failed."
 		end
 
-		render :action => 'new'
+		redirect_to current_user
 	end
 
 	private 

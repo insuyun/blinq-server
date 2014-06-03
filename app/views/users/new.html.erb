@@ -1,37 +1,36 @@
-<h1 align="center">Sign up</h1>
+<%= provide(:title, 'Sign up') %>
 
-<div class="col-md-4 col-md-offset-4">
-	<%= form_for(@user) do |f| %>
-		<%= render 'shared/error_messages' %>
+<div class="container">
+<%= form_for(@user) do |f| %>
+	<%= render 'shared/error_messages' %>
 
-		<div class="form-group">
-			<%= f.label :student_number, "Student Number"%>
-			<%= f.text_field :student_number, class: "form-control", placeholder: "Student number"%>
-		</div>
+	<div class="form-group">
+		<%= f.label :student_number, "Student Number", class: "label-lg" %>
+		<%= f.text_field :student_number, class: "form-control input-lg", placeholder: "Student number"%>
+	</div>
 
-		<div class="form-group">
-			<%= f.label :name %>
-			<%= f.text_field :name, class: "form-control", placeholder: "Name"%>
-		</div>
+	<div class="form-group">
+		<%= f.label :name, class: "label-lg" %>
+		<%= f.text_field :name, class: "form-control input-lg", placeholder: "Name"%>
+	</div>
 
-		<div class="form-group">
-			<%= f.label :email %>
-			<%= f.text_field :email, class: "form-control", placeholder: "Email"%>
-		</div>
+	<div class="form-group">
+		<%= f.label :email, class: "label-lg" %>
+		<%= f.text_field :email, class: "form-control input-lg", placeholder: "Email"%>
+	</div>
 
-		<div class="form-group">
-			<%= f.label :password %>
-			<%= f.password_field :password, class: "form-control", placeholder: "Password"%>
-		</div>
+	<div class="form-group">
+		<%= f.label :password, class: "label-lg"%>
+		<%= f.password_field :password, class: "form-control input-lg", placeholder: "Password"%>
+	</div>
 
-		<div class="form-group">
-			<%= f.label :password_confirmation, "Confirmation" %>
-			<%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirmation"%>
-		</div>
+	<div class="form-group">
+		<%= f.label :password_confirmation, "Confirmation", class: "label-lg"%>
+		<%= f.password_field :password_confirmation, class: "form-control input-lg", placeholder: "Confirmation"%>
+	</div>
 
-		<div class="form-group" align="right">
-			<%= f.submit "Sign up", class: "btn btn-large btn-primary" %>
-			<%= link_to_function "Cancel", "history.back()", class: "btn btn-large btn-warning" %>
-		</div>
-	<% end %>
+	<div class="form-group">
+		<%= f.submit "Sign up", class: "btn btn-lg btn-primary" %>
+	</div>
+<% end %>
 </div>

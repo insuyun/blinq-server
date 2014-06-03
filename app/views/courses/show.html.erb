@@ -1,31 +1,24 @@
-<h1 align="center"><%= "#{@course.code} #{@course.name}" %></h1>
+<% provide(:title, "#{@course.code} #{@course.name}") %>
 
-<div class="col-md-8 col-md-offset-2">
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>Date</th>
-				<th>Attendance</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @course.lectures.each do |lecture| %>
-				<tr>
-					<td><%= "#{lecture.date} #{Date::ABBR_DAYNAMES[lecture.date.wday]}" %></td>
-					<% if current_user.admin? %>
-						<td><%= link_to "View", lecture, class: "btn btn-sm btn-default"%></td>
-					<% else %>
-						<% if current_user.attending? lecture %>
-							<td>O</td>
-						<% else %>
-							<td class="warning">X</td>
-						<% end %>
-					<% end %>
-				</tr>
+<% @course.lectures.each do |lecture| %>
+	<% if current_user.attending? lecture %>
+		<%= "<div class=\"course-container container-fluid success\">".html_safe %>
+	<% else %>
+		<%= "<div class=\"course-container container-fluid fail\">".html_safe %>
+	<% end %>
+		<div class="col-xs-10">
+			<%= "#{lecture.date} #{Date::ABBR_DAYNAMES[lecture.date.wday]}" %>
+		</div>
+		<div class="col-xs-2">
+			<% if current_user.attending? lecture %>
+				 <span class="glyphicon glyphicon-ok glyphicon-success"></span>
+			<% else %>
+				 <span class="glyphicon glyphicon-remove glyphicon-fail"></span>
 			<% end %>
-		</tbody>
-	</table>
-	<div class="form-group" align="right">
-		<%= link_to_function "Back", "history.back()", class: "btn btn-large btn-warning" %>
+		</div>
 	</div>
+	<hr>
+<% end %>
+<div class="form-group" align="right">
+	<%= link_to_function "Back", "history.back()", class: "btn btn-large btn-warning" %>
 </div>
