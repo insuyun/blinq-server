@@ -103,3 +103,13 @@ hr {
 {
 	color: red;
 }
+
+.glyphicon-black
+{
+	color: #444444;
+}
+
+.no-hover:hover
+{
+	text-decoration: none;
+}

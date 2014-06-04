@@ -16,6 +16,12 @@ class RegistrationsController < ApplicationController
 		redirect_to current_user
 	end
 
+	def show
+		@registration = Registration.find(params[:id])
+		@course = @registration.course
+		@user = @registration.user
+	end
+
 	private 
 	def registration_params
 		params.require(:registration).permit(:course_id)

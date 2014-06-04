@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
 	def show
 		@courses = Course.all
+		@user = current_user
 	end
 
 	private

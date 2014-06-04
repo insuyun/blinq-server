@@ -20,4 +20,8 @@ class Course < ActiveRecord::Base
 
 		list_of_lectures.sort{|x,y| x <=> y}
 	end
+
+	def registering_students
+		registering_users.find_all{|user| not user.admin?}
+	end
 end

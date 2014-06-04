@@ -11,6 +11,7 @@ namespace :db do
 												 admin: true)
 
 		user = User.create!(name: "user",
+												student_number: 20080587,
 												email: "user@kaist.ac.kr",
 												password: "user",
 												password_confirmation: "user")
@@ -61,7 +62,7 @@ namespace :db do
 			end
 		end
 
-		users = User.students
+		users = User.all
 		courses = Course.all[0..-2] # except for one course
 		
 		users.each do |user|
