@@ -1,24 +1,47 @@
 <% provide(:title, "#{@course.code} #{@course.name}") %>
 
-<% @course.lectures.each do |lecture| %>
-	<% if current_user.attending? lecture %>
-		<%= "<div class=\"course-container container-fluid success\">".html_safe %>
-	<% else %>
-		<%= "<div class=\"course-container container-fluid fail\">".html_safe %>
+<% if current_user.admin? %>
+	<% @course.registering_students.each do |user| %>
+		<%= link_to @course.registrations.find_by(user_id: user.id), target: :_top, class: "no-hover" do %>
+			<div class="course-container container-fluid success">
+				<div class="col-xs-3">
+					<%= user.student_number %>
+				</div>
+				<div class="col-xs-7">
+					<%= user.name %>
+				</div>
+				<div class="col-xs-1">
+					<% if user.attend_last_lecture? @course %>
+						<span class="glyphicon glyphicon-ok glyphicon-success"></span>
+					<% else %>
+						<span class="glyphicon glyphicon-remove glyphicon-fail"></span>
+					<% end %>
+				</div>
+		</div>
+		<hr/>
 	<% end %>
-		<div class="col-xs-10">
-			<%= "#{lecture.date} #{Date::ABBR_DAYNAMES[lecture.date.wday]}" %>
-		</div>
-		<div class="col-xs-2">
-			<% if current_user.attending? lecture %>
-				 <span class="glyphicon glyphicon-ok glyphicon-success"></span>
+	<% end %>
+<% else %>
+	<% @course.lectures.each do |lecture| %>
+		<% if current_user.attending? lecture %>
+			<%= "<div class=\"course-container container-fluid success\">".html_safe %>
 			<% else %>
-				 <span class="glyphicon glyphicon-remove glyphicon-fail"></span>
-			<% end %>
-		</div>
-	</div>
-	<hr>
-<% end %>
+				<%= "<div class=\"course-container container-fluid fail\">".html_safe %>
+				<% end %>
+				<div class="col-xs-10">
+					<%= "#{lecture.date} #{Date::ABBR_DAYNAMES[lecture.date.wday]}" %>
+				</div>
+				<div class="col-xs-2">
+					<% if current_user.attending? lecture %>
+						<span class="glyphicon glyphicon-ok glyphicon-success"></span>
+					<% else %>
+						<span class="glyphicon glyphicon-remove glyphicon-fail"></span>
+					<% end %>
+				</div>
+			</div>
+			<hr>
+		<% end %>
+	<% end %>
 <div class="form-group" align="right">
 	<%= link_to_function "Back", "history.back()", class: "btn btn-large btn-warning" %>
 </div>

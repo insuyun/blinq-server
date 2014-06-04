@@ -1,11 +1,19 @@
-<% provide(:title, "Attendances") %>
+<% if @user.admin? %>
+	<% provide(:title, "Admin page") %>
+<% else %>
+	<% provide(:title, "Attendances") %>
+<% end %>
 
 
-<% current_user.registered_courses.each do |course| %>
+<% @user.registered_courses.each do |course| %>
 	<%= link_to course, class: "success registered-course", target: :_top do %>
 		<div class="course-container container-fluid">
 			<div class="col-xs-1 course-icon">
-				  <span class="glyphicon glyphicon-ok"></span>
+				<% if @user.admin? %>
+					<span class="glyphicon glyphicon-cog glyphicon-black"></span>
+				<% else %>
+					<span class="glyphicon glyphicon-ok glyphicon-black"></span>
+				<% end %>
 			</div>
 			<div class="col-xs-10">
 				<div class="div-course-code">
@@ -20,8 +28,8 @@
 	<% end %>
 <% end %>
 
-<% current_user.unregistered_courses.each do |course| %>
-	<%= link_to registrations_path(course_id: course.id), data:{confirm: "Do you want to register this course?"}, class: "unregistered-course", target: :_top do %>
+<% @user.unregistered_courses.each do |course| %>
+	<%= link_to registrations_path(course_id: course.id), data:{confirm: "Do you want to register this course?"}, class: "unregistered-course" do %>
 		<div class="course-container container-fluid">
 			<div class="col-xs-1 course-icon">
 				  <span class="glyphicon glyphicon-minus"></span>

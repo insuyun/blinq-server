@@ -7,6 +7,8 @@ class Lecture < ActiveRecord::Base
 	has_many :attendances
 	has_many :attending_users, through: :attendances, source: :user
 
+	default_scope :order => 'date ASC' 
+
 	def course
 		schedule.course
 	end

@@ -33,4 +33,7 @@ class User < ActiveRecord::Base
 		all.find_all {|user| not user.admin?}
 	end
 
+	def attend_last_lecture?(course)
+		attending? course.lectures.last
+	end
 end

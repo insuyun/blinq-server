@@ -58,7 +58,7 @@ Bcheck::Application.routes.draw do
 	resources :sessions, only: [:new, :create, :destroy]
 	resources :courses
 	resources :lectures, only: [:show]
-	resources :registrations, only: [:new, :create]
+	resources :registrations, only: [:new, :create, :show]
 	match '/signup',  to: 'users#new',            via: 'get'
 	match '/signin',  to: 'sessions#new',         via: 'get'
 	match '/signout', to: 'sessions#destroy',     via: 'delete'
