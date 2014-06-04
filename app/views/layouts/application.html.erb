@@ -6,8 +6,24 @@
 		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 		<%= csrf_meta_tags %>
 	</head>
+	<%= javascript_tag do %>
+		var referer = "<%= controller.request.env["HTTP_REFERER"] %>";
+		var url = document.URL;
+		var domain = location.protocol + "//" + location.host + "/";
+		var signout = "";
+
+		if (url == domain)
+		{
+			referer = "";
+		}
+		else  if (url.lastIndexOf(domain + "users/") == 0)
+		{
+			referer = "";
+			signout = "<%= signout_url %>";
+		}
+	<% end %>
 	<body>
-		<!--<%= link_to "Sign out", signout_path, method: "delete", class: "btn btn-primary" %>-->
+		<!-- <%= link_to "Sign out", signout_path, method: :get, class: "btn btn-primary" %>-->
 
 		<div class="container">
 			<% flash.each do |key, value| %>

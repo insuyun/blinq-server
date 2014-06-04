@@ -81,6 +81,7 @@ hr {
 .div-course-name
 {
 	width:100%;
+	color: #444444;
 }
 
 .div-course-code
@@ -112,4 +113,15 @@ hr {
 .no-hover:hover
 {
 	text-decoration: none;
+}
+
+.text-div
+{
+	color: #8852a1;
+	font-weight: bold; 
+}
+
+.content
+{
+	color: #444444;
 }

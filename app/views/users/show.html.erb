@@ -12,7 +12,7 @@
 				<% if @user.admin? %>
 					<span class="glyphicon glyphicon-cog glyphicon-black"></span>
 				<% else %>
-					<span class="glyphicon glyphicon-ok glyphicon-black"></span>
+					<span class="glyphicon glyphicon-ok glyphicon-success"></span>
 				<% end %>
 			</div>
 			<div class="col-xs-10">
@@ -38,7 +38,7 @@
 				<div class="div-course-code">
 					<%= course.code %>
 				</div>
-				<div class="div-course-name">
+				<div>
 					<%= course.name %>
 				</div>
 			</div>
