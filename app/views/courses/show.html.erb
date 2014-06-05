@@ -1,5 +1,31 @@
 <% provide(:title, "#{@course.code} #{@course.name}") %>
-	<div class="course-container container-fluid text-div">
+<%= javascript_tag do %>
+	$(document).ready(function() { 
+	var toggle = true;
+	$('#start-attendance-button').click(function() {
+	if(toggle)
+	{
+	$(this).removeClass('btn-primary');
+	$(this).addClass('btn-warning');
+	$(this).text("Stop attendance check");
+	<% if signed_in?
+			current_user.save 
+	%>
+		console.log("<%= current_user.attendance_key %>");
+	<% end %>
+	}
+	else
+	{
+	$(this).addClass('btn-primary');
+	$(this).removeClass('btn-warning');
+	$(this).text("Start attendance check");
+	}
+	toggle = !toggle;
+	});
+	});
+<% end %>
+
+<div class="course-container container-fluid text-div">
 		<div class="col-xs-3">Instructor</div>
 		<div class="col-xs-8 content"><%= @course.instructor %></div>
 		<div class="col-xs-3">Career</div>
@@ -11,11 +37,10 @@
 </div>
 <hr>
 <% if current_user.admin? %>
-	<!--
-	<div class="container"><%= link_to "Start attendance check", "#", id: "start-attendance-button", class: "btn btn-primary btn-lg" %></div>
-	-->
-	<div class="container"><%= link_to "Stop attendance check", "#", id: "start-attendance-button", class: "btn btn-warning btn-lg" %></div>
-		<% end %>
+	<div class="container">
+	<button id="start-attendance-button" type="button" class="btn btn-lg btn-primary">Start attendance check</button>
+	</div>
+<% end %>
 		<hr/>
 <% if current_user.admin? %>
 	<% @course.registering_students.each do |user| %>

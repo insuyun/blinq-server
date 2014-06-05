@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	before_create :create_attendance_key
 	has_secure_password
 
 	validates :name, presence: true
@@ -35,5 +36,12 @@ class User < ActiveRecord::Base
 
 	def attend_last_lecture?(course)
 		attending? course.lectures.last
+	end
+
+	private
+	def create_attendance_key
+		begin
+			self. attendance_key = SecureRandom.hex(8) # or whatever you chose like UUID tools
+		end while self.class.exists?(:attendance_key => attendance_key)
 	end
 end
