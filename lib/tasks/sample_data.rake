@@ -38,7 +38,7 @@ namespace :db do
 			{code: "MAS350", name: "Elementary Probability Theory", instructor: "Kangwook Hwang", course_type:1, career:0, homepage: "klms.kaist.ac.kr", notice: "blackboard",
 			schedules_attributes: [{day:1, start_time:Time.new(2000, 1, 1, 13, 00), end_time:Time.new(2000, 1, 1, 14, 30)},
 									{day:3, start_time:Time.new(2000, 1, 1, 13, 00), end_time:Time.new(2000, 1, 1, 14, 30)}]},
-			{code: "IS511", name: "Information Security", instructor: "Yongdae Kim, Seungwon Shin, Byunghoon Kang, Kyungsoo Park", course_type:0, career:1, homepage: "http://syssec.kaist.ac.kr/~yongdaek/courses/is511/index.html", notice: "Undergraduate, Graduate mutual recongnition",
+			{code: "IS511", name: "Information Security", instructor: "Yongdae Kim, Seungwon Shin, Byunghoon Kang, Kyungsoo Park", course_type:0, career:1, homepage: "syssec.kaist.ac.kr/~yongdaek/courses/is511/index.html", notice: "Undergraduate, Graduate mutual recongnition",
 			schedules_attributes: [{day:1, start_time:Time.new(2000, 1, 1, 16, 00), end_time:Time.new(2000, 1, 1, 17, 30)},
 									{day:3, start_time:Time.new(2000, 1, 1, 16, 00), end_time:Time.new(2000, 1, 1, 17, 30)}]},
 			{code: "CS311", name: "Computer Architecture", instructor: "Hyeonsoo Yoon", course_type:0, career:0, homepage: "klms.kaist.ac.kr", notice: "", 
