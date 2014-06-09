@@ -63,7 +63,7 @@ namespace :db do
 			end
 		end
 
-		users = User.all
+		users = User.all[2..-1]
 		courses = Course.all[0..-2] # except for one course
 		
 		users.each do |user|

@@ -1,7 +1,7 @@
 <% provide(:title, "#{@course.code} #{@user.name}") %>
 
 <% @course.lectures.each do |lecture| %>
-	<% if current_user.attending? lecture %>
+	<% if @user.attending? lecture %>
 		<%= "<div class=\"course-container container-fluid success\">".html_safe %>
 		<% else %>
 			<%= "<div class=\"course-container container-fluid fail\">".html_safe %>
@@ -10,7 +10,7 @@
 				<%= "#{lecture.date} #{Date::ABBR_DAYNAMES[lecture.date.wday]}" %>
 			</div>
 			<div class="col-xs-2">
-				<% if current_user.attending? lecture %>
+				<% if @user.attending? lecture %>
 					<span class="glyphicon glyphicon-ok glyphicon-success"></span>
 				<% else %>
 					<span class="glyphicon glyphicon-remove glyphicon-fail"></span>

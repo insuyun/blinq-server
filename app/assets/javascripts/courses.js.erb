@@ -1,1 +1,23 @@
+$(document).ready(function()
+{
+			var toggle = true;
 
+			$('#attendance-check-button').click(function()
+				{
+					if (toggle)
+						console.log("test1");
+					else
+						console.log("test2");
+
+					toggle = ~toggle; 
+				});
+
+			if ($('#attendance-check-button').hasClass('btn-warning'))
+			{
+				window.reset = true;
+			}
+			else
+			{
+				window.reset = false;
+			}
+});

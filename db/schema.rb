@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140605144051) do
+ActiveRecord::Schema.define(version: 20140609150520) do
 
   create_table "attendances", force: true do |t|
     t.integer  "lecture_id"
@@ -38,6 +38,22 @@ ActiveRecord::Schema.define(version: 20140605144051) do
 
   add_index "courses", ["code"], name: "index_courses_on_code", unique: true
   add_index "courses", ["name"], name: "index_courses_on_name", unique: true
+
+  create_table "delayed_jobs", force: true do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "lectures", force: true do |t|
     t.date     "date"
@@ -88,6 +104,10 @@ ActiveRecord::Schema.define(version: 20140605144051) do
     t.datetime "updated_at"
     t.boolean  "admin",           default: false
     t.string   "attendance_key"
+    t.integer  "parent_id"
+    t.integer  "course_id"
+    t.integer  "lecture_id"
+    t.string   "push_token"
   end
 
 end

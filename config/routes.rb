@@ -66,5 +66,9 @@ Bcheck::Application.routes.draw do
 	match '/registrations', to: 'registrations#create', via: 'get'
 
 	root 'sessions#new'
-
+	
+	match '/users/:id/check', to: 'users#check', as: 'check_user', via: 'get'
+	match '/union', to: 'users#union', as: 'union_user', via: 'get'
+	match '/token', to: 'users#token', as: 'token_user', via: 'get'
+	match '/reset', to: 'users#reset', via: 'get'
 end

@@ -20,6 +20,7 @@ class RegistrationsController < ApplicationController
 		@registration = Registration.find(params[:id])
 		@course = @registration.course
 		@user = @registration.user
+		@referer = course_path(@course)
 	end
 
 	private 

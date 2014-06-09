@@ -33,6 +33,7 @@ class CoursesController < ApplicationController
 
 	def show
 			@course = Course.find(params[:id])
+			@referer = user_path(current_user)
 	end
 
 	private

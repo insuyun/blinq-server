@@ -7,7 +7,11 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<%= javascript_tag do %>
-		var referer = "<%= controller.request.env["HTTP_REFERER"] %>";
+		<% if @referer %>
+			var referer = "<%= @referer %>";
+		<% else %>
+			var referer = "<%= controller.request.env["HTTP_REFERER"] %>";
+		<% end %>
 		var url = document.URL;
 		var domain = location.protocol + "//" + location.host + "/";
 		var signout = "";
@@ -19,8 +23,13 @@
 		else  if (url.lastIndexOf(domain + "users/") == 0)
 		{
 			referer = "";
-			signout = "<%= signout_url %>";
+			signout = "http://blinq.in/signout";
 		}
+
+		var attendance_key = "";
+		<% if signed_in? %>
+			attendance_key = "<%= current_user.attendance_key %>";
+		<% end %>
 	<% end %>
 	<body>
 		<!-- <%= link_to "Sign out", signout_path, method: :get, class: "btn btn-primary" %>-->

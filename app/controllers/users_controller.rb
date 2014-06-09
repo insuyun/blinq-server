@@ -22,6 +22,36 @@ class UsersController < ApplicationController
 		@user = current_user
 	end
 
+	def check
+		@user = User.find(params[:id])
+		@course = Course.find(params[:course_id])
+		if @user.checking?
+			@user.stop_check @course
+		else
+			@user.start_check @course
+		end
+		
+		redirect_to @course
+	end
+
+	def union
+		@neighbor = User.find_by_attendance_key(params[:attendance_key])
+		current_user.union @neighbor if @neighbor
+	end
+
+	def token
+		if signed_in? and (current_user.push_token != params[:push_token])
+			current_user.update_attribute(:push_token, params[:push_token])
+		end
+	end
+
+	def reset
+		Course.all.each do |course|
+			lecture = course.lectures.last
+			Attendance.destroy_all(lecture_id:lecture.id)
+		end
+	end
+
 	private
 	def user_params
 		params.require(:user).permit(:name, :email, :password,

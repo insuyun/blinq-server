@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 	before_action :signed_in_user, only: [:new]
 
 	def new
+		@referer = root_path
 	end
 
 	def create
