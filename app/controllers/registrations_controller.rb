@@ -2,7 +2,7 @@ class RegistrationsController < ApplicationController
 	def new
 	end
 
-	def create
+	def register
 		@registration = Registration.new
 		@registration.course_id = params[:course_id]
 		@registration.user_id = current_user.id
@@ -13,7 +13,7 @@ class RegistrationsController < ApplicationController
 			flash[:warning] = "Course registration has failed."
 		end
 
-		redirect_to current_user
+		redirect_to user_path(current_user)
 	end
 
 	def show

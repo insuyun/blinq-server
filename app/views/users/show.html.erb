@@ -29,7 +29,7 @@
 <% end %>
 
 <% @user.unregistered_courses.each do |course| %>
-	<%= link_to registrations_path(course_id: course.id), data:{confirm: "Do you want to register this course?"}, class: "unregistered-course" do %>
+	<%= link_to register_course_path(course_id: course.id), data:{confirm: "Do you want to register this course?"}, class: "unregistered-course" do %>
 		<div class="course-container container-fluid">
 			<div class="col-xs-1 course-icon">
 				  <span class="glyphicon glyphicon-minus"></span>

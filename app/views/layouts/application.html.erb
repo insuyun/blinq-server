@@ -7,23 +7,14 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<%= javascript_tag do %>
-		<% if @referer %>
-			var referer = "<%= @referer %>";
-		<% else %>
-			var referer = "<%= controller.request.env["HTTP_REFERER"] %>";
-		<% end %>
+		var referer = "<%= @referer %>";
 		var url = document.URL;
 		var domain = location.protocol + "//" + location.host + "/";
 		var signout = "";
 
-		if (url == domain)
+		if (url.lastIndexOf(domain + "users/") == 0)
 		{
-			referer = "";
-		}
-		else  if (url.lastIndexOf(domain + "users/") == 0)
-		{
-			referer = "";
-			signout = "http://blinq.in/signout";
+		signout = "<%= signout_path %>";
 		}
 
 		var attendance_key = "";
